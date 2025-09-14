@@ -3,593 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Catalogue Teckstra</title>
-    <style>
-      :root {
-        --primary-color: #f4edde;
-        --secondary-color: #a67246;
-        --accent-color: #bf9a78;
-        --light-gray: #acb2b4;
-        --dark-gray: #515250;
-        --text-dark: #2c2b28;
-        --white: #ffffff;
-        --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
-      }
-
-      body {
-        margin: 0;
-        font-family: "Segoe UI", Arial, sans-serif;
-        background: var(--primary-color);
-        color: var(--text-dark);
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-
-      /* HEADER */
-      header {
-        background: var(--secondary-color);
-        color: var(--white);
-        display: flex;
-        align-items: center;
-        padding: 10px 20px;
-        box-shadow: var(--shadow);
-      }
-      header img {
-        height: 50px;
-        margin-right: 15px;
-      }
-      header h1 {
-        margin: 0;
-        font-size: 24px;
-      }
-
-      /* MAIN */
-      .main-content {
-        flex: 1;
-        display: flex;
-      }
-
-      /* Sidebar */
-      .sidebar {
-        width: 270px;
-        background: var(--white);
-        border-right: 1px solid var(--light-gray);
-        padding: 15px;
-        box-sizing: border-box;
-        height: calc(100vh - 80px);
-        overflow-y: auto;
-        box-shadow: var(--shadow);
-        position: sticky;
-        top: 80px;
-      }
-      .sidebar-title {
-        background: var(--secondary-color);
-        color: var(--white);
-        padding: 10px;
-        margin: 0 0 12px 0;
-        border-radius: 4px;
-        font-size: 18px;
-      }
-      .sidebar-menu {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      .sidebar-menu li {
-        margin: 8px 0;
-      }
-      .sidebar-menu a {
-        text-decoration: none;
-        color: var(--secondary-color);
-        font-size: 15px;
-        transition: color 0.2s;
-      }
-      .sidebar-menu a:hover {
-        color: var(--accent-color);
-        text-decoration: underline;
-      }
-
-      /* Content */
-      .products-container {
-        flex: 1;
-        padding: 20px;
-        box-sizing: border-box;
-      }
-      .product-section {
-        display: none;
-        animation: fadeIn 0.4s ease-in-out;
-      }
-      .product-section.active {
-        display: block;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .products-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-      .product-card {
-        border: 1px solid var(--light-gray);
-        border-radius: 10px;
-        overflow: hidden;
-        width: calc(100% - 40px);
-        box-shadow: var(--shadow);
-        background: var(--white);
-        transition: box-shadow 0.3s;
-      }
-      .product-card:hover {
-        box-shadow: var(--shadow-hover);
-      }
-      .product-image {
-        width: 100%;
-        height: 250px;
-        overflow: hidden;
-        position: relative;
-      }
-      .product-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .product-info {
-        padding: 15px;
-      }
-      .product-title {
-        margin: 0 0 10px;
-        font-size: 22px;
-        color: var(--secondary-color);
-      }
-      .product-description {
-        margin: 0 0 15px;
-        color: var(--dark-gray);
-      }
-      .specs-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 14px;
-      }
-      .specs-table th,
-      .specs-table td {
-        border: 1px solid var(--light-gray);
-        padding: 6px 8px;
-        text-align: left;
-      }
-      .specs-table th {
-        background: var(--accent-color);
-        color: var(--white);
-      }
-      .specs-table tr:nth-child(even) td {
-        background: var(--primary-color);
-      }
-
-      /* A propos */
-      .about {
-        background: var(--white);
-        padding: 30px;
-        margin-bottom: 30px;
-        border-radius: 10px;
-        box-shadow: var(--shadow);
-      }
-      .about h2 {
-        color: var(--secondary-color);
-      }
-
-      /* Contact */
-
-      .contact-section {
-        padding: 50px 20px;
-        background-color: #f9f9f9;
-        font-family: Arial, sans-serif;
-      }
-      .contact-container {
-        max-width: 600px;
-        margin: auto;
-        background: white;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      }
-      .contact-container h2 {
-        text-align: center;
-        margin-bottom: 20px;
-      }
-      .contact-container label {
-        display: block;
-        margin-top: 15px;
-        font-weight: bold;
-      }
-      .contact-container input,
-      .contact-container textarea,
-      .contact-container select {
-        width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-        font-size: 1em;
-      }
-      .contact-container button {
-        margin-top: 20px;
-        padding: 12px 20px;
-        background-color: #0070f3;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 1em;
-        transition: background 0.3s;
-      }
-      .contact-container button:hover {
-        background-color: #005bb5;
-      }
-
-      /* FOOTER */
-      footer {
-        background: var(--dark-gray);
-        color: var(--white);
-        text-align: center;
-        padding: 20px;
-        margin-top: auto;
-      }
-    </style>
+    <title>Site en construction - Teckstra</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- HEADER -->
-    <header>
-      <img src="/img/logo.gif" alt="Logo Teckstra" />
-      <h1>Catalogue Teckstra</h1>
-    </header>
-
-    <!-- MAIN -->
-    <div class="main-content">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <h3 class="sidebar-title">Gammes classiques</h3>
-        <ul class="sidebar-menu">
-          <li><a href="#" data-target="about">À propos / Contact</a></li>
-
-            <strong>Teckstra Classic</strong>
-            <ul>
-              <li><a href="#" data-target="bridge">Série BRIDGE</a></li>
-              <li><a href="#" data-target="romantic">Série ROMANTIC</a></li>
-              <li><a href="#" data-target="london">Série LONDON</a></li>
-              <li><a href="#" data-target="monet">Série MONET</a></li>
-              <li><a href="#" data-target="kent">Série KENT</a></li>
-              <li><a href="#" data-target="oxford">Série OXFORD</a></li>
-              <li><a href="#" data-target="oriental">Série ORIENTAL</a></li>
-              <li>
-                <a href="#" data-target="westminster">Série WESTMINSTER</a>
-              </li>
-              <li><a href="#" data-target="victoria">Série VICTORIA</a></li>
-              <li><a href="#" data-target="empire">Série EMPIRE</a></li>
-              <li><a href="#" data-target="wembley">Série WEMBLEY</a></li>
-              <li><a href="#" data-target="birmingham">Série BIRMINGHAM</a></li>
-              <li><a href="#" data-target="relax">Série RELAX</a></li>
-              <li><a href="#" data-target="tables-basses">Tables basses</a></li>
-              <li><a href="#" data-target="fauteuils">Fauteuils</a></li>
-              <li><a href="#" data-target="bacs-fleurs">Bacs à fleurs</a></li>
-              <li><a href="#" data-target="trolley">Trolley</a></li>
-            </ul>
-
-            <strong>Teckstra Ergonomic</strong>
-            <ul>
-              <li><a href="#" data-target="poolhouse">Série POOLHOUSE</a></li>
-              <li><a href="#" data-target="COTTAGE"> Série COTTAGE</a></li>
-              <li>
-                <a href="#" data-target="FARMHOUSE">Série FARMHOUSE</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </aside>
-
-      <!-- Contenu principal -->
-      <main class="products-container">
-        <!-- Section A propos -->
-        <section id="about" class="product-section active">
-          <div class="about">
-            <h2>À propos</h2>
-            <p>
-              Bienvenue chez <strong>Teckstra</strong>, spécialiste du mobilier
-              haut de gamme. Nos collections combinent design, confort et
-              durabilité pour sublimer vos espaces intérieurs comme extérieurs.
-              Découvrez nos gammes variées adaptées à toutes vos envies.
-              Teckstra est une entreprise belge spécialisée dans la conception et la vente de mobilier de jardin haut de gamme, principalement en teck. Située à Court-Saint-Étienne, Teckstra propose une gamme diversifiée de produits, allant des meubles en teck massif aux structures en aluminium, en passant par des parasols et des tonnelles, répondant ainsi aux besoins variés des amateurs de jardinage et d'aménagement extérieur. 
-Facebook
-
-La marque se distingue par son engagement envers la qualité et la durabilité. Le teck, matériau phare de leurs créations, est réputé pour sa résistance aux intempéries et sa longévité, ce qui en fait un choix idéal pour le mobilier extérieur. Teckstra s'efforce de proposer des produits qui allient esthétique, confort et fonctionnalité, permettant ainsi à ses clients de créer des espaces extérieurs élégants et accueillants.
-            </p>
-          </div>
-          <div class="contact-container">
-            <h2>Contactez-nous</h2>
-            <p>
-              Remplissez ce formulaire pour nous envoyer un message ou pour
-              poser une question sur un produit.
-            </p>
-
-            <form id="contact-form" action="/send-message" method="POST">
-              <!-- Nom -->
-              <label for="name">Nom</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Votre nom"
-                required
-              />
-
-              <!-- Email -->
-              <label for="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Votre email"
-                required
-              />
-
-              <!-- Message -->
-              <label for="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                placeholder="Votre message"
-                required
-              ></textarea>
-
-              <!-- Sélection de référence -->
-              <label for="product-ref">Référence du produit</label>
-              <select id="product-ref" name="product-ref">
-                <option value="">-- Choisir une référence --</option>
-                <!-- Exemple de références : tu peux compléter avec toutes celles du site -->
-                <optgroup label="BRIDGE - Chaises STANDARD">
-                  <option value="TC1110/40">
-                    TC 1110/40 - Chaise pliante STANDARD sans accoudoirs
-                  </option>
-                  <option value="TC1111/40">
-                    TC 1111/40 - Chaise pliante STANDARD avec accoudoirs
-                  </option>
-                </optgroup>
-                <optgroup label="POOLHOUSE - Chaises & Fauteuils pliants">
-                  <option value="TE1110/40">
-                    TE 1110/40 - Chaise pliante POOLHOUSE sans accoudoirs
-                  </option>
-                  <option value="TE1111/40">
-                    TE 1111/40 - Chaise pliante POOLHOUSE avec accoudoirs
-                  </option>
-                  <option value="TE1121/45">
-                    TE 1121/45 - Fauteuil empilable POOLHOUSE
-                  </option>
-                  <option value="TE1131/45">
-                    TE 1131/45 - Fauteuil pliant POOLHOUSE multi-positions
-                  </option>
-                </optgroup>
-                <optgroup label="POOLHOUSE - Tables pliantes">
-                  <option value="TE1310/70">
-                    TE 1310/70 - Table pliante POOLHOUSE carré 70x70cm
-                  </option>
-                  <option value="TE1310/90">
-                    TE 1310/90 - Table pliante POOLHOUSE carré 90x90cm
-                  </option>
-                  <option value="TE1320/120">
-                    TE 1320/120 - Table pliante POOLHOUSE rectangle 120x70cm
-                  </option>
-                  <option value="TE1350/120">
-                    TE 1350/120 - Table pliante POOLHOUSE ronde diamètre 120cm
-                  </option>
-                </optgroup>
-                <!-- Ajouter toutes les autres références du site ici -->
-              </select>
-
-              <!-- Bouton -->
-              <button type="submit">Envoyer</button>
-            </form>
-          </div>
-        </section>
-
-        <!-- Section BRIDGE -->
-        <section id="bridge" class="product-section">
-          <div class="products-grid">
-            <div class="product-card">
-              <div class="product-image">
-                <img src="/img/BRIDGE.jpg" alt="BRIDGE" />
-              </div>
-              <div class="product-info">
-                <h3 class="product-title">BRIDGE</h3>
-                <p class="product-description">
-                  Table extensible de la série BRIDGE, parfaite pour recevoir
-                  famille et amis. Design moderne et matériaux de qualité
-                  supérieure.
-                </p>
-                <table class="specs-table">
-                  <thead>
-                    <tr>
-                      <th colspan="2">Référence</th>
-                      <th>Désignation</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th colspan="3">
-                        Chaises pliantes STANDARD Hauteur 89 cm
-                      </th>
-                    </tr>
-                    <tr>
-                      <td colspan="2">TC 1110/40</td>
-                      <td>Chaise pliante STANDARD sans accoudoirs</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">TC 1111/40</td>
-                      <td>Chaise pliante STANDARD avec accoudoirs</td>
-                    </tr>
-                    <tr>
-                      <th colspan="3">
-                        Chaises pliantes NEW LINE Hauteur 1 m00
-                      </th>
-                    </tr>
-                    <tr>
-                      <td colspan="2">TC 1120/40</td>
-                      <td>Chaise pliante NEW LINE sans accoudoirs</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">TC 1121/40</td>
-                      <td>Chaise pliante NEW LINE avec accoudoirs</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Section ROMANTIC -->
-        <section id="romantic" class="product-section">
-          <h2>Série ROMANTIC</h2>
-          <p>Page dédiée à la série ROMANTIC — à compléter avec ton contenu.</p>
-        </section>
-
-        <!-- Section LONDON -->
-        <section id="london" class="product-section">
-          <h2>Série LONDON</h2>
-          <p>Page dédiée à la série LONDON — à compléter avec ton contenu.</p>
-        </section>
-
-        <!-- Section MONET -->
-        <section id="monet" class="product-section">
-          <h2>Série MONET</h2>
-          <p>Page dédiée à la série MONET — à compléter avec ton contenu.</p>
-        </section>
-
-        <!-- Section KENT -->
-        <section id="kent" class="product-section">
-          <h2>Série KENT</h2>
-          <p>Page dédiée à la série KENT — à compléter avec ton contenu.</p>
-        </section>
-        <!-- Section OXFORD -->
-        <section id="oxford" class="product-section">
-          <h2>Série OXFORD</h2>
-          <p>Page dédiée à la série OXFORD — à compléter avec ton contenu.</p>
-        </section>
-        <!-- Section ORIENTAL -->
-        <section id="oriental" class="product-section">
-          <h2>Série ORIENTAL</h2>
-          <p>Page dédiée à la série ORIENTAL — à compléter avec ton contenu.</p>
-        </section>
-
-        <!-- Section POOLHOUSE -->
-        <section id="poolhouse" class="product-section">
-          <div class="products-grid">
-            <div class="product-card">
-              <div class="product-image">
-                <img src="/img/POOLHOUSE.jpg" alt="POOLHOUSE" />
-              </div>
-              <div class="product-info">
-                <h3 class="product-title">POOLHOUSE</h3>
-                <p class="product-description">
-                  Mobilier pliant de la série POOLHOUSE, idéal pour optimiser
-                  l’espace et accueillir confortablement vos invités. Design
-                  pratique et résistant.
-                </p>
-                <table class="specs-table">
-                  <thead>
-                    <tr>
-                      <th>Réf.</th>
-                      <th>Désignation</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th colspan="2">Chaises & Fauteuils pliants</th>
-                    </tr>
-                    <tr>
-                      <td>TE 1110/40</td>
-                      <td>Chaise pliante POOLHOUSE sans accoudoirs</td>
-                    </tr>
-                    <tr>
-                      <td>TE 1111/40</td>
-                      <td>Chaise pliante POOLHOUSE avec accoudoirs</td>
-                    </tr>
-                    <tr>
-                      <td>TE 1121/45</td>
-                      <td>Fauteuil empilable POOLHOUSE</td>
-                    </tr>
-                    <tr>
-                      <td>TE 1131/45</td>
-                      <td>Fauteuil pliant POOLHOUSE multi-positions</td>
-                    </tr>
-                    <tr>
-                      <th colspan="2">Tables pliantes</th>
-                    </tr>
-                    <tr>
-                      <td>TE 1310/70</td>
-                      <td>Table pliante POOLHOUSE carré 70x70cm</td>
-                    </tr>
-                    <tr>
-                      <td>TE 1310/90</td>
-                      <td>Table pliante POOLHOUSE carré 90x90cm</td>
-                    </tr>
-                    <tr>
-                      <td>TE 1320/120</td>
-                      <td>Table pliante POOLHOUSE rectangle 120x70cm</td>
-                    </tr>
-                    <tr>
-                      <td>TE 1350/120</td>
-                      <td>Table pliante POOLHOUSE ronde diamètre 120cm</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        
-      </main>
+    <div class="floating-elements">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
     </div>
 
-    
+    <div class="construction-container">
+      <div class="logo">TECKSTRA</div>
+      <div class="subtitle">Meubles de jardin en teck</div>
 
-    <!-- FOOTER -->
-    <footer>
-      <p>&copy; 2025 Teckstra. Tous droits réservés.</p>
-      <p>Contact : contact@teckstra.com | +33 1 23 45 67 89</p>
-    </footer>
+      <div class="construction-icon">🔨</div>
 
-    <!-- JS -->
-    <script>
-      document
-        .querySelectorAll(".sidebar-menu a[data-target]")
-        .forEach((link) => {
-          link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const tgt = link.getAttribute("data-target");
+      <h1 class="main-message">Site en construction</h1>
+      <p class="sub-message">
+        Nous travaillons actuellement sur une nouvelle version de notre site web
+        pour vous offrir une meilleure expérience d'achat de nos meubles en teck
+        de qualité.
+      </p>
 
-            // Masquer toutes les sections
-            document.querySelectorAll(".product-section").forEach((sec) => {
-              sec.classList.remove("active");
-            });
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
 
-            // Afficher la section ciblée
-            const targetSection = document.getElementById(tgt);
-            if (targetSection) {
-              targetSection.classList.add("active");
-            }
-          });
-        });
-    </script>
+      <div class="contact-info">
+        <h3>Nous restons à votre disposition</h3>
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="icon">📍</span>
+            <span>Rue de la Roche, 1 - B-1490 Court-St-Etienne, Belgique</span>
+          </div>
+          <div class="contact-item">
+            <span class="icon">📞</span>
+            <span>+32 10 61 54 68</span>
+          </div>
+          <div class="contact-item">
+            <span class="icon">✉️</span>
+            <span>info@teckstra.be</span>
+          </div>
+          <div class="contact-item">
+            <span class="icon">🕒</span>
+            <span>Du mardi au samedi : 10h00-18h30</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="mailto:info@teckstra.be" class="social-link" title="Email">
+          ✉️
+        </a>
+        <a href="tel:+3210615468" class="social-link" title="Téléphone"> 📞 </a>
+      </div>
+
+      <p class="footer-text">Merci pour votre patience</p>
+    </div>
   </body>
 </html>
