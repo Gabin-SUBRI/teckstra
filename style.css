@@ -16,6 +16,12 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "vandijk";
+  src: url("vandijk.ttf") format("truetype");
+  font-weight: 700;
+}
+
 body {
   font-family: "Arial", sans-serif;
   background: linear-gradient(
@@ -27,6 +33,10 @@ body {
   min-height: 100vh;
   color: var(--text-dark);
   padding: 20px 0;
+}
+
+#titre_vandijk {
+  font-family: "vandijk";
 }
 
 .floating-elements {
