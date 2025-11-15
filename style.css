@@ -35,8 +35,12 @@ body {
   padding: 20px 0;
 }
 
-#titre_vandijk {
-  font-family: "vandijk";
+.logo {
+  max-width: 200px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .floating-elements {
