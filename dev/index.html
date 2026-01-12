@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teckstra - Meubles de jardin en teck</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="header-container">
+        <!-- Bouton Menu Hamburger -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- Logo centré -->
+        <div class="logo-container">
+          <img
+            src="/img/LogoTeckstra.be.jpg"
+            alt="Teckstra Logo"
+            class="logo"
+          />
+        </div>
+
+        <!-- Bouton Contact -->
+        <div class="menu-right">
+          <a href="#contact" class="contact-btn">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- MENU LATERAL (SIDEBAR) -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2>Menu</h2>
+        <button class="close-btn" id="closeBtn" aria-label="Fermer">
+          &times;
+        </button>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li>
+          <a href="#" class="menu-link active" data-category="accueil"
+            >🏠 Accueil</a
+          >
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="adriatic">Adriatic</a>
+        </li>
+        <li><a href="#" class="menu-link" data-category="after">After</a></li>
+        <li>
+          <a href="#" class="menu-link" data-category="ajaccio">Ajaccio</a>
+        </li>
+        <li><a href="#" class="menu-link" data-category="annecy">Annecy</a></li>
+        <li>
+          <a href="#" class="menu-link" data-category="atlantic">Atlantic</a>
+        </li>
+        <li><a href="#" class="menu-link" data-category="autres">Autres</a></li>
+        <li>
+          <a href="#" class="menu-link" data-category="auvergne">Auvergne</a>
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="avoriaz">Avoriaz</a>
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="bac-a-fleurs"
+            >Bac à fleurs</a
+          >
+        </li>
+        <li><a href="#" class="menu-link" data-category="bastia">Bastia</a></li>
+        <li>
+          <a href="#" class="menu-link" data-category="birmingham"
+            >Birmingham</a
+          >
+        </li>
+        <li><a href="#" class="menu-link" data-category="bridge">Bridge</a></li>
+        <li>
+          <a href="#" class="menu-link" data-category="canaries">Canaries</a>
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="chamonix">Chamonix</a>
+        </li>
+        <li><a href="#" class="menu-link" data-category="chatel">Chatel</a></li>
+        <li><a href="#" class="menu-link" data-category="cocoon">Cocoon</a></li>
+        <li>
+          <a href="#" class="menu-link" data-category="cottage">Cottage</a>
+        </li>
+        <li><a href="#" class="menu-link" data-category="cubic">Cubic</a></li>
+        <li><a href="#" class="menu-link" data-category="dining">Dining</a></li>
+        <li><a href="#" class="menu-link" data-category="empire">Empire</a></li>
+        <li>
+          <a href="#" class="menu-link" data-category="epernay">Epernay</a>
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="farmhouse">Farmhouse</a>
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="fauteuils">Fauteuils</a>
+        </li>
+        <li><a href="#" class="menu-link" data-category="kent">Kent</a></li>
+        <li>
+          <a href="#" class="menu-link" data-category="kitchen">Kitchen</a>
+        </li>
+        <li><a href="#" class="menu-link" data-category="loft">Loft</a></li>
+        <li><a href="#" class="menu-link" data-category="london">London</a></li>
+        <li><a href="#" class="menu-link" data-category="lunch">Lunch</a></li>
+        <li><a href="#" class="menu-link" data-category="milano">Milano</a></li>
+        <li><a href="#" class="menu-link" data-category="monaco">Monaco</a></li>
+        <li><a href="#" class="menu-link" data-category="monet">Monet</a></li>
+        <li>
+          <a href="#" class="menu-link" data-category="morzine">Morzine</a>
+        </li>
+        <li><a href="#" class="menu-link" data-category="nice">Nice</a></li>
+        <li>
+          <a href="#" class="menu-link" data-category="normandy">Normandy</a>
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="oriental">Oriental</a>
+        </li>
+        <li><a href="#" class="menu-link" data-category="oxford">Oxford</a></li>
+        <li>
+          <a href="#" class="menu-link" data-category="parasol">Parasol</a>
+        </li>
+        <li><a href="#" class="menu-link" data-category="patio">Patio</a></li>
+        <li><a href="#" class="menu-link" data-category="phocea">Phocea</a></li>
+        <li>
+          <a href="#" class="menu-link" data-category="poolhouse">Poolhouse</a>
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="provence">Provence</a>
+        </li>
+        <li><a href="#" class="menu-link" data-category="relax">Relax</a></li>
+        <li><a href="#" class="menu-link" data-category="rimini">Rimini</a></li>
+        <li><a href="#" class="menu-link" data-category="rivera">Rivera</a></li>
+        <li>
+          <a href="#" class="menu-link" data-category="romantic">Romantic</a>
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="table-basse"
+            >Table basse</a
+          >
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="teckalu">Teckalu</a>
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="textilene">Textilene</a>
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="trolley">Trolley</a>
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="veyrier">Veyrier</a>
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="victoria">Victoria</a>
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="vintage">Vintage</a>
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="wembley">Wembley</a>
+        </li>
+        <li>
+          <a href="#" class="menu-link" data-category="westminster"
+            >Westminster</a
+          >
+        </li>
+        <li><a href="#" class="menu-link" data-category="wittex">Wittex</a></li>
+      </ul>
+    </nav>
+
+    <!-- Overlay pour fermer le menu -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="main-content">
+      <div class="container">
+        <!-- Page Accueil -->
+        <section id="accueil" class="category-section active">
+          <h1 class="page-title">Bienvenue chez Teckstra</h1>
+          <div class="welcome-content">
+            <p class="intro-text">
+              Découvrez notre collection exclusive de meubles de jardin en teck
+              de qualité premium. Sélectionnez une catégorie dans le menu pour
+              explorer nos produits.
+            </p>
+            <div class="welcome-features">
+              <div class="feature-card">
+                <span class="feature-icon">🌳</span>
+                <h3>Teck Premium</h3>
+                <p>Bois de teck de première qualité</p>
+              </div>
+              <div class="feature-card">
+                <span class="feature-icon">⚡</span>
+                <h3>Résistant</h3>
+                <p>Conçu pour durer dans le temps</p>
+              </div>
+              <div class="feature-card">
+                <span class="feature-icon">✨</span>
+                <h3>Design unique</h3>
+                <p>Collections variées et élégantes</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Adriatic -->
+        <section id="adriatic" class="category-section">
+          <h2 class="category-title">Collection Adriatic</h2>
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="/img/tous/adriatic/TableADRIATIC-R.jpg"
+                alt="Fauteuil ADRIATIC"
+              />
+            </div>
+            <div class="product-info">
+              <div class="product-table">
+                <!-- En-tête -->
+                <div class="table-header">
+                  <div>Réf.</div>
+                  <div>Désignation</div>
+                </div>
+
+                <!-- Catégorie: Fauteuils -->
+                <div class="category-row">Fauteuils</div>
+                <div class="product-row">
+                  <div class="ref-cell">TI 0121/56</div>
+                  <div class="designation-cell">
+                    Fauteuil empilable ADRIATIC, accoudoirs en Alu Laqué
+                  </div>
+                </div>
+
+                <!-- Catégorie: Tables -->
+                <div class="category-row">Tables</div>
+                <div class="product-row">
+                  <div class="ref-cell">TI 3320/220</div>
+                  <div class="designation-cell">
+                    Table ADRIATIC rectangulaire 220x100cm, tablette en Verre
+                  </div>
+                </div>
+
+                <!-- Catégorie: Divers -->
+                <div class="category-row">Divers</div>
+                <div class="product-row">
+                  <div class="ref-cell">TI 0510/200</div>
+                  <div class="designation-cell">Lit piscine TEXTILENE/INOX</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- After -->
+        <section id="after" class="category-section">
+          <h2 class="category-title">Collection After</h2>
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/img/tous/after/AFTER.jpg" alt="Fauteuil ADRIATIC" />
+            </div>
+            <div class="product-info">
+              <div class="product-table">
+                <!-- En-tête -->
+                <div class="table-header">
+                  <div>Réf.</div>
+                  <div>Désignation</div>
+                </div>
+
+                <!-- Catégorie: Fauteuils -->
+                <div class="category-row">
+                  TO 9910/192 Ensemble AFTER, composé de :
+                </div>
+                <div class="product-row">
+                  <div class="ref-cell">1</div>
+                  <div class="designation-cell">
+                    Bar AFTER 192x103x110cm + tablette en Verre
+                  </div>
+                  <div class="ref-cell">2</div>
+                  <div class="designation-cell">Tabourets AFTER</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Ajaccio -->
+        <section id="ajaccio" class="category-section">
+          <h2 class="category-title">Collection Ajaccio</h2>
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="/img/tous/ajaccio/fauteuilajaccio'19.jpg"
+                alt="Fauteuil ADRIATIC"
+              /><img
+                src="/img/tous/ajaccio/lit ajaccio'22.jpg"
+                alt="Fauteuil ADRIATIC"
+              /><img
+                src="/img/tous/ajaccio/salonajaccio'19bis.jpg"
+                alt="Fauteuil ADRIATIC"
+              /><img
+                src="/img/tous/ajaccio/tableajaccio'19bis.jpg"
+                alt="Fauteuil ADRIATIC"
+              />
+            </div>
+            <div class="product-info">
+              <div class="product-table">
+                <!-- En-tête -->
+                <div class="table-header">
+                  <div>Réf.</div>
+                  <div>Désignation</div>
+                </div>
+
+                <!-- Catégorie: Fauteuils -->
+                <div class="category-row">Fauteuils</div>
+                <div class="product-row">
+                  <div class="ref-cell">TI 0121/56</div>
+                  <div class="designation-cell">Fauteuil empilable AJACCIO</div>
+                </div>
+                <div class="category-row">
+                  Tables rectangulaires extensibles
+                </div>
+                <div class="product-row">
+                  <div class="ref-cell">TQ 2320/01</div>
+                  <div class="designation-cell">
+                    Table AJACCIO ext. 180/240x100cm (plateau en céramique)
+                  </div>
+                  <div class="ref-cell">TQ 2320/02</div>
+                  <div class="designation-cell">
+                    Table AJACCIO ext. 220/300x100cm (plateau en céramique)
+                  </div>
+                </div>
+                <div class="category-row">Lits piscine & transats</div>
+                <div class="product-row">
+                  <div class="ref-cell">TQ 1512/200</div>
+                  <div class="designation-cell">
+                    Lit piscine AJACCIO, empilable
+                  </div>
+                  <div class="ref-cell">TQ 1512/60</div>
+                  <div class="designation-cell">Transat AJACCIO</div>
+                </div>
+                <div class="category-row">Salon AJACCIO 2+1, composé de :</div>
+                <div class="product-row">
+                  <div class="ref-cell">2</div>
+                  <div class="designation-cell">Fauteuils 1 place</div>
+                  <div class="ref-cell">1</div>
+                  <div class="designation-cell">Banquette 2 places</div>
+                  <div class="ref-cell">1</div>
+                  <div class="designation-cell">
+                    Table basse de 100x60cm (tablette en verre trempé)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Ajouter les autres sections pour chaque catégorie de la même manière -->
+      </div>
+    </main>
+
+    <!-- FOOTER / CONTACT -->
+    <footer id="contact" class="footer">
+      <div class="container">
+        <div class="contact-info">
+          <h3>Nous contacter</h3>
+          <div class="contact-details">
+            <div class="contact-item">
+              <span class="icon">📍</span>
+              <span
+                >Rue de la Roche, 1<br />B-1490 Court-St-Etienne<br />Belgique</span
+              >
+            </div>
+            <div class="contact-item">
+              <span class="icon">📞</span>
+              <span>+32 10 61 54 68</span>
+            </div>
+            <div class="contact-item">
+              <span class="icon">✉️</span>
+              <span>ets-gossiaux@skynet.be</span>
+            </div>
+            <div class="contact-item">
+              <span class="icon">🕒</span>
+              <span>Du mardi au samedi : 10h00-18h30</span>
+            </div>
+            <div class="contact-item">
+              <span class="icon">📅</span>
+              <span>Sur rendez-vous (Hors saison)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Teckstra - Tous droits réservés</p>
+        <p>
+          Réalisé par
+          <a
+            href="https://gabinsubri.com"
+            target="_blank"
+            rel="noopener"
+            class="dev-credit"
+            >Gabin SUBRI</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
