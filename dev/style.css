@@ -730,25 +730,47 @@ header {
    RESPONSIVE
 ======================================== */
 @media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px;
+  /* Header non sticky sur mobile */
+  header {
+    position: relative;
   }
 
-  .menu-left,
-  .menu-right {
-    flex: none;
-    width: 100%;
+  .header-container {
+    padding: 15px;
+    /* Garde la disposition horizontale */
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  /* Hamburger à gauche */
+  .hamburger-btn {
+    flex-shrink: 0;
+  }
+
+  /* Logo au centre, plus petit */
+  .logo-container {
+    flex: 1;
+    display: flex;
     justify-content: center;
   }
 
-  .menu-left {
-    flex-wrap: wrap;
+  .logo {
+    height: 50px;
   }
 
-  .logo {
-    height: 60px;
+  /* Bouton contact à droite, plus compact */
+  .menu-right {
+    flex-shrink: 0;
+  }
+
+  .contact-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  .sidebar {
+    width: 300px;
+    left: -300px;
   }
 
   .product-grid {
@@ -766,7 +788,16 @@ header {
   .contact-details {
     grid-template-columns: 1fr;
   }
-  .footer-bottom {
-    padding: 15px 20px;
+
+  .welcome-content {
+    padding: 25px;
+  }
+
+  .intro-text {
+    font-size: 16px;
+  }
+
+  .welcome-features {
+    grid-template-columns: 1fr;
   }
 }
