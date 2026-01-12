@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initMenuNavigation();
   initSmoothScroll();
   initCarousels();
+  initLightbox();
 });
 
 /**
@@ -197,6 +198,116 @@ function initCarousels() {
 
     prevBtn.addEventListener("click", prevSlide);
     nextBtn.addEventListener("click", nextSlide);
+  });
+}
+
+/**
+ * Initialiser la lightbox (visionneuse d'images)
+ */
+function initLightbox() {
+  // Créer la lightbox
+  const lightbox = document.createElement("div");
+  lightbox.className = "lightbox";
+  lightbox.innerHTML = `
+    <button class="lightbox-close" aria-label="Fermer">&times;</button>
+    <button class="lightbox-nav prev" aria-label="Image précédente">&#10094;</button>
+    <div class="lightbox-content">
+      <img class="lightbox-image" src="" alt="">
+    </div>
+    <button class="lightbox-nav next" aria-label="Image suivante">&#10095;</button>
+    <div class="lightbox-counter"></div>
+  `;
+  document.body.appendChild(lightbox);
+
+  const lightboxImg = lightbox.querySelector(".lightbox-image");
+  const closeBtn = lightbox.querySelector(".lightbox-close");
+  const prevBtn = lightbox.querySelector(".lightbox-nav.prev");
+  const nextBtn = lightbox.querySelector(".lightbox-nav.next");
+  const counter = lightbox.querySelector(".lightbox-counter");
+
+  let currentImages = [];
+  let currentIndex = 0;
+
+  // Ajouter les événements de clic sur toutes les images de produits
+  document.addEventListener("click", function (e) {
+    const clickedImg = e.target.closest(".product-image img");
+    if (!clickedImg) return;
+
+    // Récupérer toutes les images du même produit
+    const productCard = clickedImg.closest(".product-card");
+    const allImages = productCard.querySelectorAll(".product-image img");
+
+    currentImages = Array.from(allImages);
+    currentIndex = currentImages.indexOf(clickedImg);
+
+    openLightbox();
+  });
+
+  function openLightbox() {
+    updateLightboxImage();
+    lightbox.classList.add("active");
+    document.body.style.overflow = "hidden";
+
+    // Masquer les boutons de navigation s'il n'y a qu'une image
+    if (currentImages.length <= 1) {
+      prevBtn.style.display = "none";
+      nextBtn.style.display = "none";
+      counter.style.display = "none";
+    } else {
+      prevBtn.style.display = "flex";
+      nextBtn.style.display = "flex";
+      counter.style.display = "block";
+    }
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  function updateLightboxImage() {
+    lightboxImg.src = currentImages[currentIndex].src;
+    lightboxImg.alt = currentImages[currentIndex].alt;
+
+    if (currentImages.length > 1) {
+      counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+    }
+  }
+
+  function showPrevImage() {
+    currentIndex =
+      (currentIndex - 1 + currentImages.length) % currentImages.length;
+    updateLightboxImage();
+  }
+
+  function showNextImage() {
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    updateLightboxImage();
+  }
+
+  // Events
+  closeBtn.addEventListener("click", closeLightbox);
+  prevBtn.addEventListener("click", showPrevImage);
+  nextBtn.addEventListener("click", showNextImage);
+
+  // Fermer en cliquant sur le fond
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Navigation au clavier
+  document.addEventListener("keydown", function (e) {
+    if (!lightbox.classList.contains("active")) return;
+
+    if (e.key === "Escape") {
+      closeLightbox();
+    } else if (e.key === "ArrowLeft" && currentImages.length > 1) {
+      showPrevImage();
+    } else if (e.key === "ArrowRight" && currentImages.length > 1) {
+      showNextImage();
+    }
   });
 }
 
